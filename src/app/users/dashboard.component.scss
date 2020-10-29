@@ -1,0 +1,40 @@
+@import 'variables';
+.container {
+    padding: 0.5% 30%;
+    text-align: center;
+}
+
+.sub-container {
+    padding: 8% 5%; 
+    position: relative;
+    background: $sletgrey;
+    height: 60rem;
+}
+
+.incorrect-container {
+    background: $pink;
+    text-align: center;
+}
+
+.mat-hint {
+    color: $light;
+}
+
+.mat-form-field {
+    width: 32rem;
+}
+
+.text-container {
+    text-align: center;
+}
+
+@media only screen and (max-width : 48em) {
+
+
+  .container {
+    padding: 32% 10%;
+}
+.mat-form-field {
+    width: 23.5rem;
+}
+}

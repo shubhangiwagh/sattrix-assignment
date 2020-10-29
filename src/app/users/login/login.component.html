@@ -1,0 +1,72 @@
+<div class="container">
+    <div><span class="toggleClass" [ngClass]="{'active':loginRegisterToggle }" (click)="loginRegisterToggle = true">Login</span><span  (click)="loginRegisterToggle = false" class="toggleClass" [ngClass]="{'active':!loginRegisterToggle }" style="margin-left: 10px">Register</span></div>
+    <div class="sub-container" *ngIf="loginRegisterToggle">
+    <div class='text-container'><h2>Login</h2></div>
+    <div class='incorrect-container text-container' *ngIf="isCorrect">Incorrect username or password</div>
+    <div class='incorrect-container text-container' *ngIf="error && loginRegisterToggle">User does not exist. Please Register</div>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="username" required>
+            <mat-hint>First letter should be capital</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-hint>Password should be greater than 3 characters</mat-hint>
+        </mat-form-field>
+    </p>
+    <div class='text-container'><button mat-raised-button color="primary" (click)="login()">Login</button></div>
+    </div>
+
+    <div class="sub-container" *ngIf="!loginRegisterToggle">
+        <div class='text-container'><h2>Registration</h2></div>
+        <div class='incorrect-container text-container' *ngIf="isCorrect">Password and Confirm Password must be same</div>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput [(ngModel)]="registraionUsername" required>
+                <mat-hint>First letter should be capital</mat-hint>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="registraionEmail" required>
+                <mat-hint>First letter should be capital</mat-hint>
+            </mat-form-field>
+        </p>
+        
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="registraionPHide ? 'password' : 'text'" [(ngModel)]="registraionPassword">
+                <button mat-icon-button matSuffix (click)="registraionPHide = !registraionPHide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="registraionPHide">
+                    <mat-icon>{{registraionPHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-hint>Password should be greater than 3 characters</mat-hint>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [type]="registraionCHide ? 'password' : 'text'" [(ngModel)]="registraionConfirmPassword">
+                <button mat-icon-button matSuffix (click)="registraionCHide = !registraionCHide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="registraionCHide">
+                    <mat-icon>{{registraionCHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-hint>Password should be greater than 3 characters</mat-hint>
+            </mat-form-field>
+        </p>
+        <div class='text-container'><button mat-raised-button color="primary" (click)="register()">Register</button></div>
+        </div>
+</div>

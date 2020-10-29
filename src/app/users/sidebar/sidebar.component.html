@@ -1,0 +1,14 @@
+<div class="sidebar">
+    <a href="">Sattrix</a>
+    <nav>
+        <a href="#" [ngClass]="{'active': router.url === '/' || router.url.includes('/dashboard') }" (click)="changeFilter('Register')" [routerLink]="['/dashboard']">
+            Register
+        </a>
+        <a href="#" [ngClass]="{'active': router.url === '/list'}" (click)="changeFilter('List')" [routerLink]="['/list']">
+            List Page
+        </a>
+        <a href="#"  (click)="changeFilter('Logout')" [routerLink]="['/']">
+            Logout
+        </a>
+    </nav>
+</div>
